@@ -1,9 +1,41 @@
 <html>
-    <head><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
-       <link rel="stylesheet" href="index.css">
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+        <link rel="stylesheet" href="index.css">
     </head>
     <body>
-	<script src="index.js"></script>
+        <header class="banner">
+            <div>
+                <H1>The Food Hut</H1>
+                <h4>The best burgers and pizza's in town.</h4>
+            </div>
+        </header>
+
+        <main>
+            <section class="menu-container" id="menu-container">
+
+            </section>
+
+            <section class="order-container" id="order-container">
+
+            </section>
+
+            <section class="payment hidden" id="payment">
+                <h3 class="form-header">Enter you card details</h3>
+                <form class="payment-form">
+                    <input class="input-field" type="text" name="name" id="name" placeholder="Enter your name">
+                    <input class="input-field" type="number" name="card-number" id="card-number" placeholder="Enter card number">
+                    <input class="input-field" type="number" name="cvv-number" id="cvv-number" placeholder="Enter CVV">
+                    <button type="submit" class="btn">Pay</button>
+                </form>
+                
+            </section>
+        </main>
+
+	    <script src="index.js" type="module"></script>
     </body>
 </html>
 

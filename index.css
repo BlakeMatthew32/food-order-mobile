@@ -1,3 +1,132 @@
 body {
-    margin: 0;
+    margin: 0 auto;
+    max-width: 600px;
+    font-family: 'Montserrat', sans-serif;
+    border: 1px solid darkgray;
 } 
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+/* banner styles */
+
+.banner {
+    display: flex;
+    box-sizing: border-box;
+    background-image: url(images/burger-banner.jpg);
+    background-origin: border-box;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 25% 65%;
+    height: 200px;
+    color: honeydew;
+    align-items: center;
+    padding: 40px;
+}
+
+.banner h4{
+    margin-top: 10px;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+
+
+/* payment styles */
+
+.payment {
+    box-sizing: border-box;
+    padding: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    text-align: center;
+    box-shadow: 0px 0px 200px 10px rgba(0, 0, 0, .2);
+}
+
+.payment-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 23px;
+}
+
+.form-header {
+    margin: 46px;
+}
+
+.input-field {
+    width: 90%;
+    padding: 15px 20px;
+    border: 1px solid darkgray;
+    border-radius: 5px;
+}
+
+.btn {
+    width: 90%;
+    margin-top: 20px;
+    padding: 15px;
+    font-weight: 700;
+    color: #fff;
+    background-color: #16DB99;
+    border: none;
+    border-radius: 5px;
+}
+
+
+
+/* menu styles */
+
+.menu-item {
+    width: 508px;
+    padding: 5px 0 70px 0;
+    display: flex;
+    margin: 45px auto;
+    align-items: start;
+    border-bottom: 2px solid rgba(169, 169, 169, 0.5);
+}
+
+.food-icon {
+    font-size: 72px;
+    margin-right: 25px;
+}
+
+.ingredients {
+    font-size: 12px;
+    margin: 8px 0 20px;
+}
+
+.price {
+    font-weight: 600;
+}
+
+.plus-btn {
+    width: 50px;
+    height: 50px;
+    margin-left: auto;
+    border: 1px solid darkgrey;
+    border-radius: 50%;
+    font-size: 40px;
+    font-weight: 200;
+    background-color: transparent;
+}
+
+
+
+/* utilities */
+.hidden {
+    display: none;
+}
