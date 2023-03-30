@@ -1,5 +1,5 @@
 body {
-    margin: 0 auto;
+    margin: 0 auto 300px;
     max-width: 600px;
     font-family: 'Montserrat', sans-serif;
     border: 1px solid darkgray;
@@ -84,6 +84,13 @@ p {
     background-color: #16DB99;
     border: none;
     border-radius: 5px;
+    box-shadow: 1px 1px 5px rgba(51, 51, 51, 0.5);
+}
+
+.btn:hover,
+.btn:focus {
+    cursor: pointer;
+    box-shadow: none;
 }
 
 
@@ -106,6 +113,7 @@ p {
 
 .ingredients {
     font-size: 12px;
+    color: rgba(51, 51, 51, 0.9);
     margin: 8px 0 20px;
 }
 
@@ -117,11 +125,81 @@ p {
     width: 50px;
     height: 50px;
     margin-left: auto;
-    border: 1px solid darkgrey;
+    border: 2px solid darkgrey;
     border-radius: 50%;
     font-size: 40px;
     font-weight: 200;
     background-color: transparent;
+}
+
+.plus-btn:hover,
+.plus-btn:focus {
+    cursor: pointer;
+    border-color: #18b400;
+    color: #18b400;
+    font-weight: 600;
+}
+
+
+/* order styles */
+
+.order-container {
+    width: 508px;
+    margin: 0 auto 50px;
+}
+
+.order-container h4 {
+    font-size: 20px;
+    text-align: center;
+    margin: 0 0 50px 0;
+}
+
+.total {
+    display: flex;
+    margin: 15px 0;
+    padding: 20px 0;
+    border-top: 2px solid rgba(51, 51, 51, 0.8);
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.total > span {
+    margin: 0 0 0 auto;
+    font-size: 16px;
+    align-self: center;
+}
+
+.order-container > .btn {
+    width: inherit;
+}
+
+.item-added {
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.item-added p:first-of-type {
+    font-size: 20px;
+}
+
+.item-added p:last-of-type {
+    font-size: 16px;
+}
+
+.delete-btn {
+    background-color: transparent;
+    border: none;
+    margin: 0 auto 0 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(51, 51, 51, 0.6);
+}
+
+.delete-btn:hover {
+    color: #ff0000;
+    cursor: pointer;
 }
 
 
