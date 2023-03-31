@@ -5,6 +5,8 @@ const mainContainer = document.getElementById('main-container')
 const menuContainer = document.getElementById('menu-container')
 const orderContainer = document.getElementById('order-container')
 const orderDetails = document.getElementById('order-details')
+const payForm = document.getElementById('payment-form')
+const orderCompleted = document.getElementById('order-completed')
 
 const itemsInOrder = []
 
@@ -12,10 +14,13 @@ mainContainer.addEventListener('click', (e) => {
 
     if (e.target.id === "0") {
         itemsInOrder.push(menuArray.find(element => element.id === 0))
+        orderCompleted.classList.add('hidden')
     } else if (e.target.id === "1") {
         itemsInOrder.push(menuArray.find(element => element.id === 1))
+        orderCompleted.classList.add('hidden')
     } else if (e.target.id === "2") {
         itemsInOrder.push(menuArray.find(element => element.id === 2))
+        orderCompleted.classList.add('hidden')
     }
 
     renderOrder()
@@ -27,8 +32,20 @@ orderContainer.addEventListener('click', (e) => {
         e.target.id === 'Hamburger' || 
         e.target.id === 'Beer' ) {
         handleRemoveClick(e)
+    } else if ( e.target.id === 'order-btn') {
+        handleCompleteClick()
     }
 })
+
+payForm.onsubmit = (e) => {
+    e.preventDefault()
+    let customerName = e.target.firstElementChild.value
+    document.body.classList.remove('filter')
+    document.getElementById('payment').classList.add('hidden')
+    itemsInOrder.length = 0
+    renderOrder()
+    renderCompleteMsg(customerName)
+}
 
 function handleRemoveClick(e) {
 
@@ -39,6 +56,11 @@ function handleRemoveClick(e) {
     } 
 
     renderOrder()
+}
+
+function handleCompleteClick() {
+    document.getElementById('payment').classList.remove('hidden')
+    document.body.classList.add('filter')
 }
 
 function renderMenu() {
@@ -61,6 +83,11 @@ function renderOrder() {
         getOrderItems()
     }
 
+}
+
+function renderCompleteMsg(customerName) {
+    document.getElementById('customer-name').textContent = customerName
+    orderCompleted.classList.remove('hidden')
 }
 
 function getMenuItems(item) {

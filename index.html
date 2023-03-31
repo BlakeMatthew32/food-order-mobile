@@ -36,16 +36,21 @@
                 <button class="btn" id="order-btn">Complete order</button>
             </section>
 
+            <section class="order-completed hidden" id="order-completed">
+                <p class="thanks-msg">Thanks, <span id="customer-name"></span>! Your order is on the way!</p>
+            </section>
+
             <section class="payment hidden" id="payment">
                 <h3 class="form-header">Enter you card details</h3>
-                <form class="payment-form">
-                    <input class="input-field" type="text" name="name" id="name" placeholder="Enter your name">
-                    <input class="input-field" type="number" name="card-number" id="card-number" placeholder="Enter card number">
-                    <input class="input-field" type="number" name="cvv-number" id="cvv-number" placeholder="Enter CVV">
-                    <button type="submit" class="btn">Pay</button>
+                <form class="payment-form" id="payment-form">
+                    <input class="input-field" type="text" name="name" id="name" placeholder="Enter your name" required>
+                    <input class="input-field" type="number" name="card-number" id="card-number" placeholder="Enter card number" required>
+                    <input class="input-field" type="number" name="cvv-number" id="cvv-number" placeholder="Enter CVV" required>
+                    <button type="submit" class="btn" id="pay-btn">Pay</button>
                 </form>
                 
             </section>
+
         </main>
 
 	    <script src="index.js" type="module"></script>
