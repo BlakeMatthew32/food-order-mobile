@@ -37,15 +37,7 @@ orderContainer.addEventListener('click', (e) => {
     }
 })
 
-payForm.onsubmit = (e) => {
-    e.preventDefault()
-    let customerName = e.target.firstElementChild.value
-    document.body.classList.remove('filter')
-    document.getElementById('payment').classList.add('hidden')
-    itemsInOrder.length = 0
-    renderOrder()
-    renderCompleteMsg(customerName)
-}
+payForm.addEventListener('submit', handlePaymentSubmit)
 
 function handleRemoveClick(e) {
 
@@ -61,6 +53,17 @@ function handleRemoveClick(e) {
 function handleCompleteClick() {
     document.getElementById('payment').classList.remove('hidden')
     document.body.classList.add('filter')
+}
+
+function handlePaymentSubmit(e) {
+    e.preventDefault()
+    let customerName = e.target.firstElementChild.value
+    payForm.reset()
+    document.body.classList.remove('filter')
+    document.getElementById('payment').classList.add('hidden')
+    itemsInOrder.length = 0
+    renderOrder()
+    renderCompleteMsg(customerName)
 }
 
 function renderMenu() {
