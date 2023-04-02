@@ -13,13 +13,26 @@ const itemsInOrder = []
 mainContainer.addEventListener('click', (e) => {
 
     if (e.target.id === "0") {
-        itemsInOrder.push(menuArray.find(element => element.id === 0))
+        const itemOrdered = menuArray.find(element => element.id === 0)
+        if(itemOrdered.numberInOrder < 1){
+            itemsInOrder.push(itemOrdered)
+        }
+        itemsInOrder[itemsInOrder.indexOf(itemOrdered)].numberInOrder++
         orderCompleted.classList.add('hidden')
+        console.log(itemsInOrder[itemsInOrder.indexOf(itemOrdered)].numberInOrder)
     } else if (e.target.id === "1") {
-        itemsInOrder.push(menuArray.find(element => element.id === 1))
+        const itemOrdered = menuArray.find(element => element.id === 1)
+        if(itemOrdered.numberInOrder < 1){
+            itemsInOrder.push(itemOrdered)
+        }
+        itemsInOrder[itemsInOrder.indexOf(itemOrdered)].numberInOrder++
         orderCompleted.classList.add('hidden')
     } else if (e.target.id === "2") {
-        itemsInOrder.push(menuArray.find(element => element.id === 2))
+        const itemOrdered = menuArray.find(element => element.id === 2)
+        if(itemOrdered.numberInOrder < 1){
+            itemsInOrder.push(itemOrdered)
+        }
+        itemsInOrder[itemsInOrder.indexOf(itemOrdered)].numberInOrder++
         orderCompleted.classList.add('hidden')
     }
 
@@ -42,10 +55,12 @@ payForm.addEventListener('submit', handlePaymentSubmit)
 function handleRemoveClick(e) {
 
     const itemToDelete = itemsInOrder.filter( item => item.name === e.target.id )[0]
-
-    if (itemToDelete) {
+    if (itemToDelete.numberInOrder > 1) {
+        itemsInOrder[itemsInOrder.indexOf(itemToDelete)].numberInOrder--
+    } else {
+        itemsInOrder[itemsInOrder.indexOf(itemToDelete)].numberInOrder--
         itemsInOrder.splice(itemsInOrder.indexOf(itemToDelete), 1)
-    } 
+    }
 
     renderOrder()
 }
@@ -116,12 +131,13 @@ function getOrderItems() {
     let order = ``
 
     itemsInOrder.forEach(item => {
-        total += item.price
+        total += (item.price * item.numberInOrder)
         order += `
         <div class="item-added">
             <p>${item.name}</p>
             <button class="delete-btn" id="${item.name}">remove</button>
-            <p>£${item.price}</p>
+            <p class="quantity">x ${item.numberInOrder}</p>
+            <p>£${item.price * item.numberInOrder}</p>
         </div>
         `
     })
