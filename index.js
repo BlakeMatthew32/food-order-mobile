@@ -11,32 +11,15 @@ const orderCompleted = document.getElementById('order-completed')
 const itemsInOrder = []
 
 mainContainer.addEventListener('click', (e) => {
+    
+    const itemOrdered = menuArray.find(element => element.id === parseInt(e.target.id))
 
-    if (e.target.id === "0") {
-        const itemOrdered = menuArray.find(element => element.id === 0)
-        if(itemOrdered.numberInOrder < 1){
-            itemsInOrder.push(itemOrdered)
-        }
-        itemsInOrder[itemsInOrder.indexOf(itemOrdered)].numberInOrder++
-        orderCompleted.classList.add('hidden')
-        console.log(itemsInOrder[itemsInOrder.indexOf(itemOrdered)].numberInOrder)
-    } else if (e.target.id === "1") {
-        const itemOrdered = menuArray.find(element => element.id === 1)
-        if(itemOrdered.numberInOrder < 1){
-            itemsInOrder.push(itemOrdered)
-        }
-        itemsInOrder[itemsInOrder.indexOf(itemOrdered)].numberInOrder++
-        orderCompleted.classList.add('hidden')
-    } else if (e.target.id === "2") {
-        const itemOrdered = menuArray.find(element => element.id === 2)
-        if(itemOrdered.numberInOrder < 1){
-            itemsInOrder.push(itemOrdered)
-        }
-        itemsInOrder[itemsInOrder.indexOf(itemOrdered)].numberInOrder++
-        orderCompleted.classList.add('hidden')
+    if (itemOrdered) {
+        handleItemClick(itemOrdered)
+        renderOrder()
+    } else if (!itemOrdered) {
+        return
     }
-
-    renderOrder()
 })
 
 orderContainer.addEventListener('click', (e) => {
@@ -51,6 +34,16 @@ orderContainer.addEventListener('click', (e) => {
 })
 
 payForm.addEventListener('submit', handlePaymentSubmit)
+
+
+function handleItemClick(itemOrdered) {
+    if(itemOrdered.numberInOrder < 1){
+        itemsInOrder.push(itemOrdered)
+    }
+    itemsInOrder[itemsInOrder.indexOf(itemOrdered)].numberInOrder++
+    orderCompleted.classList.add('hidden')
+    console.log(itemsInOrder[itemsInOrder.indexOf(itemOrdered)].numberInOrder)
+}
 
 function handleRemoveClick(e) {
 
@@ -76,6 +69,7 @@ function handlePaymentSubmit(e) {
     payForm.reset()
     document.body.classList.remove('filter')
     document.getElementById('payment').classList.add('hidden')
+    itemsInOrder.forEach(element => element.numberInOrder = 0)
     itemsInOrder.length = 0
     renderOrder()
     renderCompleteMsg(customerName)
